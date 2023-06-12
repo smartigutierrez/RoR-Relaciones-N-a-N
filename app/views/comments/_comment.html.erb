@@ -1,0 +1,13 @@
+<table class="table table-hover">
+  <tbody>
+    <% @post.comments.each do |comment| %>
+      <tr>
+        <td id="<%= dom_id(comment) %>">
+          <%= comment.content %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "comments/new", post: post%>

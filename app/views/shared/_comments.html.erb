@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="form-group">
+    <%= label_tag :author, "Autor:" %>
+    <% if user_signed_in? %>
+      <strong><span class="form-control-plaintext"><%= current_user.name %></span></strong>
+    <% else %>
+      <strong><span class="form-control-plaintext">Anónimo</span></strong>
+    <% end %>
+  </div>
+
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "Escribe tu comentario aquí" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Enviar comentario", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

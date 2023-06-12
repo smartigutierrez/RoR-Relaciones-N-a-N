@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>¡Todos los miaus en un solo lugar!</h1>
+
+<div class="container">
+  <% @posts.each_slice(3) do |post_slice| %>
+    <div class="row">
+      <% post_slice.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mb-4 py-4;">
+            <%= image_tag post.image, class: "rounded-circle", alt: "Card image" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.description %></p>
+              <%= link_to "Leer post", post_path(post), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+

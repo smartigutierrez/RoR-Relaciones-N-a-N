@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+<br>
+  <strong><%= @post.comments.count %> Comentarios</strong>
+
+<%= render 'comments/comment', post: @post %>
+<br>
+<%= render 'shared/reactions', post: @post %>
+
+<div>
+<br>
+    <% if user_signed_in? %>
+      <% if current_user.id == @post.user_id %>
+        <%= link_to "Editar post", edit_post_path(@post), class: "btn btn-light" %> 
+        <br>
+        <br>
+        <%= button_to "Eliminar post", @post, method: :delete, class: "btn btn-danger"  %>
+        <br>
+      <% end %>
+    <% end %>
+</div>
+
+
+
+
